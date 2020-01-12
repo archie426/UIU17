@@ -13,6 +13,7 @@ namespace ItemUpdater
             Console.WriteLine("Please make sure you are inside a directory with ONLY the items you want to update");
             Console.WriteLine("Grabbing files, hold on");
             string address = Assembly.GetExecutingAssembly().Location.Replace("ItemUpdater.dll", "");
+            //Later allow for other types to be used
             foreach (var file in DirSearch(address).Where(file => file.Contains(".dat") && !file.Contains("English")))
             {
                 _filesToChange.Add(file);
