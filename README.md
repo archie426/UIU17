@@ -1,12 +1,12 @@
 # Item Updater for Unturned 2017
 
-Put everything beginning with ItemUpdater (except the .sln file and the .csproj file) into your items folder and run the .bat script. If you get some sort of error or CMD closes immediately it means you've missed something out, 
-OR
-* You haven't installed .NET SDK 2.1 (Required)
-* dotnet hasn't been set as an Environment Variable (should be automatically done in the installation)
+Put the .exe file from Releases in the folder where you want to update your files. It is recommended to exclude the NPC and other non-bundle files.
+
+Problems that can occur:
+* You haven't installed .NET SDK 3.1 (Required)
 
 Some files may need rebundling, which this doesn't do. Tested with UNTURNED RP Bundle (A somewhat 950 files that needed changing, so you can see the need) and it works.
 
-I haven't tried this with Objects or Effects, as I've never done anything with them before I have no idea. 
+I haven't tried this with Objects or Effects, as I've never done anything with them before I have no idea. It should theoretically work.
 
 Pro tip: Make a backup of your files before doing something that your not sure about
