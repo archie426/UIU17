@@ -3,7 +3,7 @@
 Put the .exe file from Releases in the folder where you want to update your files. It is recommended to exclude the NPC and other non-bundle files.
 
 Problems that can occur:
-* You haven't installed .NET SDK 3.1 (Required)
+* If you're using the non self contained application (in bin/Debug) you might not've installed .NET SDK 3.1
 
 Some files may need rebundling, which this doesn't do. Tested with UNTURNED RP Bundle (A somewhat 950 files that needed changing, so you can see the need) and it works.
 
