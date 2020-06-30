@@ -3,51 +3,65 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace ItemUpdater
 {
-    public class Program
+    public static class Program
     {
-        public static void Main(string[] args)
+        public static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
+
+        private static async Task MainAsync(string[] args)
         {
             Console.WriteLine("Please make sure you are inside a directory with ONLY the items you want to update");
+            await Task.Delay(3000);
             Console.WriteLine("Grabbing files, hold on");
-            string address = Assembly.GetExecutingAssembly().Location.Replace("ItemUpdater.dll", "");
-            //Later allow for other types to be used
-            foreach (var file in DirSearch(address).Where(file => file.Contains(".dat") && !file.Contains("English")))
-            {
-                _filesToChange.Add(file);
-            }
-            Console.WriteLine("Found " + _filesToChange.Count + " files to change.");
+            
+            string address = Assembly.GetExecutingAssembly().Location;
+            address = address.Replace(address.Contains("exe") ? "ItemUpdater.exe" : "ItemUpdater.dll", "");
+            
+            Console.WriteLine("Address: " + address);
+
+            foreach (var file in (await DirSearch(address)).Where(ShouldEdit))
+                FilesToChange.Add(file);
+            
+            Console.WriteLine("Found " + FilesToChange.Count + " files to change.");
             int completedFiles = 0;
-            foreach (String file in _filesToChange)
+            foreach (string file in FilesToChange)
             {
-                File.AppendAllText(file,"\nExclude_From_Master_Bundle");
+                await File.AppendAllTextAsync(file,"\nExclude_From_Master_Bundle");
                 completedFiles++;
-                Console.WriteLine("Completed " + completedFiles + "/" + _filesToChange.Count);
+                Console.WriteLine("Completed " + completedFiles + "/" + FilesToChange.Count);
             }
             
             Console.WriteLine("Done!");
-            
+            await Task.Delay(100000);
+
         }
         
-        private static List<String> _filesToChange = new List<string>();
+        private static readonly List<string> FilesToChange = new List<string>();
+
+        public static bool ShouldEdit(string fileLocation)
+        {
+            bool fileCheck = fileLocation.Contains(".dat") && !fileLocation.Contains("English");
+            if (!fileCheck)
+                return false;
+            string fileText = File.ReadAllText(fileLocation).ToLower();
+            return !fileText.Contains("exclude_from_master_bundle") && !fileText.Contains("npc") &&
+                   !fileText.Contains("vendor");
+        } 
         
         
         //Not my code below, thanks to whoever did it.
-        private static List<String> DirSearch(string sDir)
+        private static async Task<List<string>> DirSearch(string sDir)
         {
-            List<String> files = new List<String>();
+            List<string> files = new List<string>();
             try
             {
-                foreach (string f in Directory.GetFiles(sDir))
-                {
-                    files.Add(f);
-                }
+                files.AddRange(Directory.GetFiles(sDir));
                 foreach (string d in Directory.GetDirectories(sDir))
-                {
-                    files.AddRange(DirSearch(d));
-                }
+                    files.AddRange(await DirSearch(d));
+                
             }
             catch (Exception excpt)
             {
