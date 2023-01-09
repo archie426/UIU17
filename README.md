@@ -1,7 +1,6 @@
 # Item Updater for Unturned 2017
 
-Put everything beginning with ItemUpdater (except the .sln file and the .csproj file) into your items folder and run the exe (you can download from the 'Releases' page). If you get some sort of error or CMD closes immediately it means you've missed something out, 
-OR
+Put everything beginning with ItemUpdater (except the .sln file and the .csproj file) into your items folder and run the exe (you can download from the 'Releases' page). 
 
 Some files may need rebundling, which this doesn't do. Tested with UNTURNED RP Bundle (A somewhat 950 files that needed changing, so you can see the need) and it works.
 
