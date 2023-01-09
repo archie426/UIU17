@@ -1,8 +1,0 @@
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\obj\Release\netcoreapp3.0\ItemUpdater.csprojAssemblyReference.cache
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\obj\Release\netcoreapp3.0\ItemUpdater.AssemblyInfoInputs.cache
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\obj\Release\netcoreapp3.0\ItemUpdater.AssemblyInfo.cs
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\obj\Release\netcoreapp3.0\ItemUpdater.dll
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\obj\Release\netcoreapp3.0\ItemUpdater.pdb
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\bin\Release\netcoreapp3.0\ItemUpdater.deps.json
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\bin\Release\netcoreapp3.0\ItemUpdater.dll
-D:\Libraries\Projects\ItemUpdater\ItemUpdater\bin\Release\netcoreapp3.0\ItemUpdater.pdb
