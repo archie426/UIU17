@@ -6,4 +6,4 @@ Some files may need rebundling, which this doesn't do. Tested with UNTURNED RP B
 
 I haven't tried this with Objects or Effects, as I've never done anything with them before I have no idea. 
 
-Pro tip: Make a backup of your files before doing something that your not sure about
+Pro tip: Make a backup of your files before doing something that you're not sure about
