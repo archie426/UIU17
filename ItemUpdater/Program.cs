@@ -14,19 +14,20 @@ public static class Program
     {
         Project.LoggingProxy.LogProgramInfo();
         Project.LoggingProxy.Log("Please make sure you are inside a directory with ONLY the items you want to update");
-        await Task.Delay(3000);
-        Project.LoggingProxy.LogInfo("Grabbing files...");
-            
+        
         string address = Assembly.GetExecutingAssembly().Location;
         address = address.Replace(address.Contains("exe") ? "ItemUpdater.exe" : "ItemUpdater.dll", "");
-            
         Project.LoggingProxy.LogUpdate("Address: " + address);
+        await Task.Delay(3000);
+        
+        Project.LoggingProxy.LogInfo("Grabbing files...");
 
         foreach (var file in (await DirSearch(address)).Where(ShouldEdit))
             FilesToChange.Add(file);
             
         Project.LoggingProxy.LogUpdate("Found " + FilesToChange.Count + " files to change.");
         int completedFiles = 0;
+        
         foreach (string file in FilesToChange)
         {
             await File.AppendAllTextAsync(file,"\nExclude_From_Master_Bundle");
